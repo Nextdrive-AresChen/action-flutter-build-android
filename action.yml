@@ -16,6 +16,9 @@ inputs:
   keystore-password:
     description: "The password for the playstore key used to sign the app"
     required: true
+  key-alias:
+    description: "The alias of keystore"
+    required: true  
 
 runs:
   using: "composite"
@@ -69,6 +72,7 @@ runs:
       env:
         KEYSTORE: ${{ inputs.keystore-base64 }}
         KEYSTORE_PASSWORD: ${{ inputs.keystore-password }}
+        KEY_ALIAS: ${{ inputs.key-alias }}
       working-directory: ${{ inputs.working-directory }}/android
 
     - name: Build
